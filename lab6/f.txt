@@ -1,1 +1,94 @@
+using System;
+using System.Globalization;
+
+namespace lab6
+{
+
+    public class Person
+        {
+            public String title;
+            public String givenName;
+            public String middleName;
+            public String familyName;
+            public DateTime birthDate;
+            public bool gender;
+            public String phone;
+            public String homeAddress;
+
+            public String fullName()
+            {
+                return title + givenName + middleName + familyName;
+            }
+        }
+    public class Patient : Person
+        {
+        public String id;
+        public DateTime accepted;
+        public String[] sickness;
+        public String[] prescriptions;
+        public String[] allergies;
+        public String[] specialReqs;
+        public int age;
+
+
+        }
+
+    public class Staff : Person
+        {
+        public DateTime joined;
+        public String[] education;
+        public String[] certifications;
+        public String[] languages;
+        }
+    public class Department
+        {
+            public Staff[] staff;
+        }
+        public class Hospital
+        {
+            public String id;
+            public String address;
+            public String phone;
+            public Department[] departments;
+        }
+    public abstract class OperationsStaff : Staff{}
+    public class Nurse : OperationsStaff{}
+    public class Doctor : OperationsStaff
+        {
+        public String[] specialty;
+        public String[] locations;
+        }
+    public class Surgeon : Doctor{}
+    public abstract class AdministrativeStaff : Staff {}
+    public class FrontDeskStuff : AdministrativeStaff {}
+    public class Receptionist : FrontDeskStuff {}
+    public abstract class TechnicalStaff : Staff { }
+    public class Technician : TechnicalStaff {}
+    public class Technologist : TechnicalStaff { }
+    public class SurgicalTechnologist : Technologist {}
+    public class Organization {
+        public Person person;
+    }
+
+
+
+
+
+
+
+
+
+
+    class Program
+    {
+        static public void Main(string[] args)
+        {
+            Organization org = new Organization();
+
+            Console.WriteLine(org);
+
+
+        }
+    }
+}
 
